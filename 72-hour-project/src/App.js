@@ -1,25 +1,44 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react'
+import TestComp from './components/TestComp';
 
 function App() {
+  const [latitude, setLatitude] = useState(null)
+  const [longitude, setLongitude] = useState(null)
+  const [status, setStatus] = useState(null)
+
+
+
+  const getLocation = (position) => {
+    if (!navigator.geolocation) {
+      setStatus('Location features not available')
+    } else {
+      setStatus('Locating...')
+      navigator.geolocation.getCurrentPosition(position => {
+        setStatus(null)
+        setLatitude(position.coords.latitude)
+        setLongitude(position.coords.longitude)
+        console.log(position)
+      }, () => {
+        setStatus('Unable to get location data')
+      })
+    }
+
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button onClick={getLocation}>Get Location</button>
+      <h1>Your Current Coordinates:</h1>
+      <p>{status}</p>
+      {latitude && <p>Latitude: {latitude}</p>}
+      {longitude && <p>Longitude: {longitude}</p>}
+      <br />
+      <TestComp latitude={latitude} longitude={longitude} />
     </div>
   );
+
+
+
 }
 
 export default App;
