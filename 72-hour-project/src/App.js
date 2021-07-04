@@ -1,6 +1,7 @@
 import './App.css';
 import { useState } from 'react'
 import TestComp from './components/TestComp';
+import Ticketmaster from './components/Ticketmaster'
 
 function App() {
   const [latitude, setLatitude] = useState(null)
@@ -34,6 +35,7 @@ function App() {
       {longitude && <p>Longitude: {longitude}</p>}
       <br />
       <TestComp latitude={latitude} longitude={longitude} />
+      <Ticketmaster latitude={latitude} longitude={longitude}/>
     </div>
   );
 
