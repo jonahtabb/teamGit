@@ -36,6 +36,7 @@ function App() {
       <br />
       <TestComp latitude={latitude} longitude={longitude} />
       <Ticketmaster latitude={latitude} longitude={longitude}/>
+
     </div>
   );
 
