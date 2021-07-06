@@ -1,4 +1,6 @@
 import React, {useState, useRef} from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import { Button } from 'reactstrap'
 
 const Ticketmaster = (props) => {
 
@@ -42,21 +44,26 @@ const Ticketmaster = (props) => {
 
             })
     }
-    
-
 
     return(
-        <div>
-            <button onClick={fetcher}>See events near you</button>
-            <h2>{resultsName}</h2>
-            {distance && <h4>{`Distance: ${distance}`} miles</h4>}
-            <img src={resultsImg} />
-            <h2>{resultsName2}</h2>
-            {distance && <h4>{`Distance: ${distance2}`} miles</h4>}
-            <img src={resultsImg2} />
-            <h2>{resultsName3}</h2>
-            {distance && <h4>{`Distance: ${distance3}`} miles</h4>}
-            <img src={resultsImg3} />
+        <div className= "card my-4">
+            <h2>Ticket Master API</h2>
+            <Button className="custom-button" onClick={fetcher}>See events near you</Button>
+            <div className="card my-2 mx-auto w-50"> 
+                <h2>{resultsName}</h2>
+                {distance && <h4>{`Distance: ${distance}`} miles</h4>}
+                <img src={resultsImg} />
+            </div>
+            <div className="card my-2 mx-auto w-50"> 
+                <h2>{resultsName2}</h2>
+                {distance && <h4>{`Distance: ${distance2}`} miles</h4>}
+                <img src={resultsImg2} />
+            </div>
+            <div className="card my-2 mx-auto w-50"> 
+                <h2>{resultsName3}</h2>
+                {distance && <h4>{`Distance: ${distance3}`} miles</h4>}
+                <img src={resultsImg3} />
+            </div>
         </div>
     )
 }
