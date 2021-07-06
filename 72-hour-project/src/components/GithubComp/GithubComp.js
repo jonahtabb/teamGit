@@ -1,29 +1,46 @@
 import React, { useState } from 'react';
 
 const GithubComp = (props) => {
-  const [results, setResults] = useState(null);
+  const [resultsArr, setResultsArr] = useState(null);
   const gitURL = 'https://api.github.com/repos/jonahtabb/teamGit/commits';
-  fetch(gitURL)
-    .then((res) => res.json())
-    .then((results) => {
-      let resultsArr = [];
 
-      resultsArr = results.map((result) => {
-        return result.commit.author.name;
+  const fetcher = () => {
+    fetch(gitURL)
+      .then((res) => res.json())
+      .then((results) => {
+        console.log(results)
+        let resultsArr = [];
+
+
+        resultsArr = results.map((result) => {
+          return result.commit
+        });
+
+        setResultsArr(resultsArr)
+
       });
-      console.log(resultsArr);
-    });
-  return <div>{/* <HelperComp nameArr={results} /> */}</div>;
+  }
+  return(
+    <>
+      <button onClick={fetcher}>Github</button>
+      {resultsArr && <HelperComp info={resultsArr} />}
+    </>
+  )
 };
 
 export default GithubComp;
 
 const HelperComp = (props) => {
-  let nameList = '';
-  for (let username of props.nameArr) {
-    nameList += `<p>${username.commit.author.name} </p>`;
-  }
-  console.log(nameList);
-
-  return nameList;
+  return (
+    <>
+      {props.info.map(n => {
+        return( <>
+          <p>{n.message}</p>
+          <p>{n.committer.date}</p>
+          <p>{n.author.name}</p>
+          </>
+          )
+      })}
+    </>
+  )
 };
