@@ -41,9 +41,9 @@ function App() {
           {longitude && <p>Longitude: {longitude}</p>}
         </div>
         <WeatherComp latitude={latitude} longitude={longitude} />
-        <GithubComp />
         <NasaComp latitude={latitude} longitude={longitude} />
         <Ticketmaster latitude={latitude} longitude={longitude}/>
+        <GithubComp />
       </div>
     </div>
   );

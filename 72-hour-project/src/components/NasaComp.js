@@ -28,15 +28,15 @@ const DisplayImage = ({
         {(lon && lat) ?
             ({nasaImageUrl}) ?
                     <div className="row">
-                        <div className="col-xl">
+                        <div className="col-12">
                             <img src={nasaImageUrl} width="300px" alt="Satellite View of Earth" />
                         </div>
-                        <div className="col-xl m-2">{zoomInButton()}</div>
-                        <div className="col-xl m-2">{zoomOutButton()}</div>
+                        <div className="col-12 my-3">{zoomInButton()}</div>
+                        <div className="col-12 my-3">{zoomOutButton()}</div>
                     </div>
                     :
                     <object type="image/svg+xml" data={LoadingAnimation}>svg animation </object>
-        : <h2>Waiting on Location Data...</h2> 
+        : <p>Waiting on Location Data...</p> 
         } 
         </>
     )
@@ -90,7 +90,7 @@ const NasaComp = (props) => {
     }, [lat, lon, imageZoom])
 
     return (
-        <div className="card my-2">
+        <div className="card my-4">
             <h2>NASA Earth Api</h2>
             
             <DisplayImage
