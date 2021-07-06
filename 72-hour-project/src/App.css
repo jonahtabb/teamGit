@@ -1,5 +1,16 @@
 .App {
   text-align: center;
+  background-color: rgb(3, 77, 77);
+}
+
+.custom-container {
+}
+
+.custom-button {
+  background-color: rgb(3, 77, 77);
+}
+.custom-button:hover{
+  background-color: rgb(4, 102, 102);
 }
 
 .App-logo {
