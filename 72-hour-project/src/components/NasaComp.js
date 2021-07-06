@@ -13,13 +13,13 @@ const DisplayImage = ({
 
     function zoomOutButton() {
         if (imageZoom <  .065){
-            return <Button onClick={zoomOut} zoom-state={imageZoom}>Zoom Out</Button>
+            return <Button className="custom-button" onClick={zoomOut} zoom-state={imageZoom}>Zoom Out</Button>
         }
     }
 
     function zoomInButton() {
         if (imageZoom >  .025){
-            return <Button onClick={zoomIn}>Zoom In</Button>
+            return <Button className="custom-button" onClick={zoomIn}>Zoom In</Button>
         }
     }
 
@@ -90,8 +90,7 @@ const NasaComp = (props) => {
     }, [lat, lon, imageZoom])
 
     return (
-        <div>
-            <hr />
+        <div className="card my-2">
             <h2>NASA Earth Api</h2>
             
             <DisplayImage
@@ -102,7 +101,6 @@ const NasaComp = (props) => {
             zoomIn={zoomIn}
             zoomOut={zoomOut}
             />
-            <hr />
         </div>
     )
 }
