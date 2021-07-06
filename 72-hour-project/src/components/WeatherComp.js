@@ -33,16 +33,13 @@ const fetchData = () => {
 }
 
 return(
-    <div class="card">
+    <div class="card my-4">
         <h2>WeatherMap Api</h2>
         <Button className="custom-button" onClick={fetchData}>Click for Weather in your Area</Button>
-        
-     
         <h3>Neighborhood: {name} </h3>
-        <p>Tempature: {mainTemp} °F</p>
+        <p>Temperature: {mainTemp} °F</p>
         <p>Looks like: {description} </p>
    
-
     </div>
 )}
 

@@ -1,13 +1,34 @@
+
+
 .App {
   text-align: center;
   background-color: rgb(3, 77, 77);
+  font-family: 'Spartan', Arial, Helvetica, sans-serif;
 }
 
-.custom-container {
+h1{
+  padding: 10px;
+}
+
+h2{
+  padding: 10px;
+  margin: 5px;
+}
+
+h3{
+  padding: 10px;
+  margin: 5px;
+}
+
+.card{
+  border-color: transparent;
 }
 
 .custom-button {
   background-color: rgb(3, 77, 77);
+  width: 400px;
+  margin:auto;
+
 }
 .custom-button:hover{
   background-color: rgb(4, 102, 102);
