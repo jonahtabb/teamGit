@@ -1,36 +1,35 @@
-
-import { useState } from 'react'
-import TestComp from './components/TestComp';
+import { useState } from 'react';
+import Ticketmaster from './components/Ticketmaster'
 import NasaComp from './components/NasaComp';
+import GithubComp from './components/GithubComp/GithubComp';
 import WeatherComp from './components/WeatherComp';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Button } from 'reactstrap'
 import './App.css';
 
-
 function App() {
-  const [latitude, setLatitude] = useState(null)
-  const [longitude, setLongitude] = useState(null)
-  const [status, setStatus] = useState(null)
-
-
+  const [latitude, setLatitude] = useState(null);
+  const [longitude, setLongitude] = useState(null);
+  const [status, setStatus] = useState(null);
 
   const getLocation = (position) => {
     if (!navigator.geolocation) {
-      setStatus('Location features not available')
+      setStatus('Location features not available');
     } else {
-      setStatus('Locating...')
-      navigator.geolocation.getCurrentPosition(position => {
-        setStatus(null)
-        setLatitude(position.coords.latitude)
-        setLongitude(position.coords.longitude)
-        console.log(position)
-      }, () => {
-        setStatus('Unable to get location data')
-      })
+      setStatus('Locating...');
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setStatus(null);
+          setLatitude(position.coords.latitude);
+          setLongitude(position.coords.longitude);
+          console.log(position);
+        },
+        () => {
+          setStatus('Unable to get location data');
+        }
+      );
     }
-
-  }
+  };
   return (
     <div className="App">
       <div className="container p-3 custom-container">
@@ -41,18 +40,13 @@ function App() {
           {latitude && <p>Latitude: {latitude}</p>}
           {longitude && <p>Longitude: {longitude}</p>}
         </div>
-        <NasaComp latitude={latitude} longitude={longitude} />
-        <br />
         <WeatherComp latitude={latitude} longitude={longitude} />
-
+        <GithubComp />
+        <NasaComp latitude={latitude} longitude={longitude} />
+        <Ticketmaster latitude={latitude} longitude={longitude}/>
       </div>
-
- 
     </div>
   );
-
-
-
 }
 
 export default App;
