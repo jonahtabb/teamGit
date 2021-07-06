@@ -36,7 +36,7 @@ return(
         
      
         <h3>Neighborhood: {name} </h3>
-        <p>Tempature: {mainTemp} °F</p>
+        <p>Temperature: {mainTemp} °F</p>
         <p>Looks like: {description} </p>
    
 
