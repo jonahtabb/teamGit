@@ -1,5 +1,7 @@
 import React, {useState, useEffect, useRef} from 'react';
 import LoadingAnimation from './assets/loading_spinner.svg'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import { Button } from 'reactstrap'
 
 const DisplayImage = ({
     imageZoom,
@@ -11,13 +13,13 @@ const DisplayImage = ({
 
     function zoomOutButton() {
         if (imageZoom <  .065){
-            return <button onClick={zoomOut} zoom-state={imageZoom}>Zoom Out</button>
+            return <Button className="custom-button" onClick={zoomOut} zoom-state={imageZoom}>Zoom Out</Button>
         }
     }
 
     function zoomInButton() {
         if (imageZoom >  .025){
-            return <button onClick={zoomIn}>Zoom In</button>
+            return <Button className="custom-button" onClick={zoomIn}>Zoom In</Button>
         }
     }
 
@@ -25,11 +27,13 @@ const DisplayImage = ({
         <>
         {(lon && lat) ?
             ({nasaImageUrl}) ?
-                    <>
-                    <img src={nasaImageUrl} width="300px" alt="Satellite View of Earth" />
-                    {zoomInButton()}
-                    {zoomOutButton()}
-                    </>
+                    <div className="row">
+                        <div className="col-xl">
+                            <img src={nasaImageUrl} width="300px" alt="Satellite View of Earth" />
+                        </div>
+                        <div className="col-xl m-2">{zoomInButton()}</div>
+                        <div className="col-xl m-2">{zoomOutButton()}</div>
+                    </div>
                     :
                     <object type="image/svg+xml" data={LoadingAnimation}>svg animation </object>
         : <h2>Waiting on Location Data...</h2> 
@@ -86,8 +90,7 @@ const NasaComp = (props) => {
     }, [lat, lon, imageZoom])
 
     return (
-        <div>
-            <hr />
+        <div className="card my-2">
             <h2>NASA Earth Api</h2>
             
             <DisplayImage
@@ -98,7 +101,6 @@ const NasaComp = (props) => {
             zoomIn={zoomIn}
             zoomOut={zoomOut}
             />
-            <hr />
         </div>
     )
 }
