@@ -1,6 +1,7 @@
 import './App.css';
 import { useState } from 'react';
 import TestComp from './components/TestComp';
+import Ticketmaster from './components/Ticketmaster'
 import NasaComp from './components/NasaComp';
 import GithubComp from './components/GithubComp/GithubComp';
 import WeatherComp from './components/WeatherComp';
@@ -37,6 +38,7 @@ function App() {
       {longitude && <p>Longitude: {longitude}</p>}
       <br />
       <TestComp latitude={latitude} longitude={longitude} />
+      <Ticketmaster latitude={latitude} longitude={longitude}/>
       <br />
       <NasaComp latitude={latitude} longitude={longitude} />
       <br>
